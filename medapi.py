@@ -30,7 +30,7 @@ class Highscores(Resource):
 
 class PlayerInfo(Resource):
     def get(self, name):
-        return parser.get_player_info(name)
+        return json.dumps(parser.get_player_info(name))
 
 
 api.add_resource(OnlinePlayers, '/online_players/<world>')

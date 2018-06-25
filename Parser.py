@@ -44,7 +44,7 @@ class Parser:
             if title.get_text() == "Task list":
                 _dict['tasks_done'] = len(activities)
             else:
-                _dict[title.get_text()] = json.dumps(activity)
+                _dict[title.get_text()] = ' whatever'
 
         return _dict
 
