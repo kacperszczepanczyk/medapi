@@ -44,7 +44,7 @@ class Parser:
             if title.get_text() == "Task list":
                 _dict['tasks_done'] = len(activities)
             else:
-                _dict[title.get_text()] = activity
+                _dict[title.get_text()] = json.dumps(activity)
 
         return _dict
 
@@ -74,7 +74,7 @@ class Parser:
         if 'tasks_done' in activities:
             info['tasks_done'] = activities['tasks_done']
 
-        return json.dumps(info)
+        return info
 
     def get_online_players(self, world):
         url = 'http://medivia.online/community/online/' + str(world)
