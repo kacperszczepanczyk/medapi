@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import aiohttp
 import asyncio
+import json
 
 
 class Parser:
@@ -73,7 +74,7 @@ class Parser:
         if 'tasks_done' in activities:
             info['tasks_done'] = activities['tasks_done']
 
-        return info
+        return json.dupms(info)
 
     def get_online_players(self, world):
         url = 'http://medivia.online/community/online/' + str(world)
