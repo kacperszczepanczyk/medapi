@@ -74,7 +74,7 @@ class Parser:
         if 'tasks_done' in activities:
             info['tasks_done'] = activities['tasks_done']
 
-        return json.dupms(info)
+        return json.dumps(info)
 
     def get_online_players(self, world):
         url = 'http://medivia.online/community/online/' + str(world)
