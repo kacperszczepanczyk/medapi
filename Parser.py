@@ -1,6 +1,3 @@
-import urllib
-import ssl
-import requests
 from bs4 import BeautifulSoup
 import aiohttp
 import asyncio
@@ -21,43 +18,6 @@ class Parser:
         parser_loop = asyncio.get_event_loop()
         data = parser_loop.run_until_complete(self.get_source_data_async(url))
         return data
-
-    def get_source_data_req(self, url):
-        try:
-            return requests.get(url)
-        except requests.exceptions.RequestException as e:  # This is the correct syntax
-            return ''
-
-    def get_source_data_old(self, url):
-        context = ssl._create_unverified_context()
-        return urllib.request.urlopen(url, context=context).read()
-    '''
-        try:
-            return urllib.request.urlopen(url, context=context).read()
-        except IncompleteRead:
-            print("INCOMPLETE READ EXCEPTION")
-            # print(data)
-        except urllib.error.HTTPError:
-            print("HTTP ERROR EXCEPTION")
-            # print(data)
-        except urllib.error.URLError:
-            print("URL ERROR EXCEPTION")
-            # print(data)
-        except ConnectionResetError:
-            print("CONNECTION RESET ERROR EXCEPTION")
-        except aiohttp.client_exceptions.ClientOSError:
-            print("CLIENT OS ERROR EXCEPTION")
-            # print(data)
-        except aiohttp.ClientOSError:
-            print("CLIENT OS ERROR EXCEPTION")
-            # print(data)
-        except aiohttp.client_exceptions.ServerDisconnectedError:
-            print("SERVER DISCONNECTED ERROR EXCEPTION")
-            # print(data)
-        except:
-            print("SOME OTHER EXCEPTION")
-            # print(data)
-    '''
 
     def get_player_logo(self, soup):
         div = soup.find('div', class_='med-news-image')
