@@ -36,15 +36,15 @@ class Parser:
         for title, _list in zip(titles, lists):
             times = _list.find_all('div', class_='med-width-25')
             activities = _list.find_all('div', class_='med-width-75')
-            activity = list()
+            act = []
             for time, activity in zip(times, activities):
                 msg = time.get_text() + ' ' + activity.get_text()
-                activity.append(msg)
+                act.append(msg)
 
             if title.get_text() == "Task list":
                 _dict['tasks_done'] = len(activities)
             else:
-                _dict[title.get_text()] = ' whatever'
+                _dict[title.get_text()] = act
 
         return _dict
 
