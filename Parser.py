@@ -35,7 +35,7 @@ class Parser:
         for title, _list in zip(titles, lists):
             times = _list.find_all('div', class_='med-width-25')
             activities = _list.find_all('div', class_='med-width-75')
-            activity = []
+            activity = list()
             for time, activity in zip(times, activities):
                 msg = time.get_text() + ' ' + activity.get_text()
                 activity.append(msg)
