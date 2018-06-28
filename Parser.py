@@ -118,6 +118,7 @@ class Parser:
         data = self.get_source_data(url)
         soup = BeautifulSoup(data, "html.parser")
         stats = soup.find_all('div', class_='med-corner-right-bottom')
+        print(stats)
         for stat in stats:
             print(stat.get_text())
 
