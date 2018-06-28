@@ -111,7 +111,17 @@ class Parser:
 
         return highscores
 
+    def player_exists(self, name):
+        url = 'https://medivia.online/community/character/' + name.replace(' ', '%20')
+        print("Getting detailed info for " + url)
 
+        data = self.get_source_data(url)
+        soup = BeautifulSoup(data, "html.parser")
+        stats = soup.find_all('div', class_='med-corner-right-bottom')
+        for stat in stats:
+            print(stat.get_text())
+
+        return True
 
 
 
