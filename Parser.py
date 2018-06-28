@@ -117,12 +117,9 @@ class Parser:
 
         data = self.get_source_data(url)
         soup = BeautifulSoup(data, "html.parser")
-        stats = soup.find_all('div', class_='med-box med-box-error')
-        print(stats)
-        for stat in stats:
-            print(stat.get_text())
+        error_msg = soup.find_all('div', class_='med-box med-box-error')
 
-        return True
+        return False if error_msg else True
 
 
 
